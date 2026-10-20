@@ -1,15 +1,44 @@
-# Práctica: Consultas Básicas SELECT y Alias
 
-Este repositorio contiene las consultas fundamentales de SQL requeridas por el equipo de finanzas de TechStore, diseñadas para extraer, filtrar y traducir la información de la base de datos a un formato amigable para el negocio.
+##  Descripción del Proyecto (RetailPro)
+El objetivo de este proyecto es modelar los datos de una empresa de retail, construir la base de datos desde cero, poblarla con datos y realizar consultas analíticas avanzadas que sirvan como materia prima para un futuro dashboard en Power BI
 
-## Preguntas Técnicas
 
-### ¿Por qué es mala práctica usar `SELECT *` en producción?
-Usar `SELECT *` en entornos productivos se considera una mala práctica por varias razones concretas:
-1. **Rendimiento y consumo de red:** Al solicitar todas las columnas, la base de datos procesa y transfiere un volumen de datos mucho mayor al necesario. Si una tabla tiene 50 columnas y la aplicación solo necesita 3, se está desperdiciando ancho de banda y memoria RAM.
-2. **Mantenibilidad y estabilidad (Seguridad):** Si el esquema de la tabla cambia en el futuro (por ejemplo, se agrega una columna con datos sensibles o se elimina una columna existente), el `SELECT *` devolverá resultados inesperados que pueden romper el código de la aplicación o del reporte que consume esos datos, provocando fallas en el sistema.
 
-### ¿Por qué son importantes los alias para un stakeholder no técnico?
-Los stakeholders (como el equipo de finanzas, marketing o gerencia) necesitan tomar decisiones rápidas basadas en los datos, y no suelen estar familiarizados con la nomenclatura técnica de las bases de datos. 
+##  Progreso y Entregables por Módulo
 
-Un alias actúa como un traductor entre el mundo técnico y el negocio. Por ejemplo, una columna llamada `total_amount` puede ser ambigua: ¿es una cantidad de ítems o es dinero? Al usar un alias y transformarla a `total_amount AS monto_total_facturado`, cualquier persona del área de finanzas entiende inmediatamente qué representa ese valor sin necesidad de consultar el diccionario de datos ni preguntarle al equipo de ingeniería.
+### Módulo 1 y 2: Definición y Modelado del Negocio
+* **Objetivo:** Definir el caso de negocio y estructurar los datos.
+* **Hitos:** 
+  * Planteamiento del modelo de negocio de RetailPro.
+  * Diseño del Diagrama Entidad-Relación (DER) y normalización de la base de datos hasta la 3ra Forma Normal (3NF).
+  * Definición de las entidades principales: `Clientes`, `Productos`, `Ventas` y `Sucursales`/`Canales`.
+
+### Módulo 3: Checkpoint - Creación del Esquema (DDL y DML)
+* **Objetivo:** Materializar el modelo relacional en un motor de base de datos (SQL Server).
+* **Hitos:**
+  * Creación de la base de datos mediante sentencias `CREATE DATABASE`.
+  * Generación de tablas con sus respectivos tipos de datos, Primary Keys (PK) y Foreign Keys (FK) usando lenguaje DDL.
+  * Inserción de datos de prueba y dimensiones (clientes, categorías, regiones) mediante lenguaje DML (`INSERT INTO`).
+
+### Módulo 4: Consultas Básicas
+* **Objetivo:** Extraer información inicial trabajando con tablas individuales.
+* **Hitos:**
+  * Uso de comandos fundamentales (`SELECT`, `WHERE`, `ORDER BY`, `GROUP BY`).
+  * Análisis descriptivo básico y filtrado de registros sobre las tablas de ventas, productos y clientes de forma aislada.
+
+### Módulo 5: Consultas Enriquecidas y JOINs (Actual)
+* **Objetivo:** Cruzar tablas para obtener vistas desnormalizadas y enriquecidas, preparando la información para Power BI.
+* **Entregable:** Script `m5_consultas_joins.sql` con:
+  * **Vista Base (INNER JOIN):** Cruce de ventas históricas con descripciones de clientes y productos.
+  * **Análisis de CRM (LEFT JOIN):** Identificación de clientes registrados que nunca realizaron compras (`WHERE ... IS NULL`).
+  * **Análisis de Catálogo (LEFT JOIN):** Detección de productos sin movimiento o ventas.
+  * **Consolidado por Canal (UNION ALL):** Unificación de consultas creando columnas estáticas para diferenciar el origen de las ventas (Online vs. Presencial).
+
+
+
+## Herramientas y Tecnologías Utilizadas
+* **Lenguaje:** SQL (T-SQL)
+* **Gestor de Base de Datos:** SQL Server Management Studio (SSMS)
+* **Control de Versiones:** Git / GitHub
+* **Visualización (Próximamente):** Power BI
+
