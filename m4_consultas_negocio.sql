@@ -1,8 +1,7 @@
--- ==============================================================================
+
 -- Módulo 4 - Pre-entrega: Consultas SQL de negocio
 -- Proyecto: RetailPro
 -- Base de Datos: Ventas_Tech_DB
--- ==============================================================================
 
 USE Ventas_Tech_DB;
 GO
@@ -68,11 +67,11 @@ CROSS JOIN PromedioGeneral pg
 ORDER BY vm.Mes;
 GO
 
--- ==============================================================================
+
 -- BLOQUE DE CIERRE: Hallazgos concretos
--- ==============================================================================
+
 /*
--- 1. Un grupo reducido de clientes (identificados en la Consulta 3) agrupa gran parte del volumen de pedidos recurrentes, lo que resalta la oportunidad de armarles campañas de fidelización.
--- 2. El análisis del top 5 de productos (Consulta 2) expone que los ítems con mayor recaudación no siempre son los que tienen más unidades vendidas, demostrando la influencia del precio unitario de los productos premium en la rentabilidad general.
--- 3. La comparativa mensual (Consulta 4) permite detectar rápidamente meses valle con rendimiento 'Por debajo' del promedio, alertando sobre la necesidad de planificar promociones preventivas para sostener la facturación en periodos de baja estacionalidad.
+ 1. Un grupo reducido de clientes (identificados en la Consulta 3) agrupa gran parte del volumen de pedidos recurrentes, lo que resalta la oportunidad de armarles campañas de fidelización.
+ 2. El análisis del top 5 de productos (Consulta 2) expone que los ítems con mayor recaudación no siempre son los que tienen más unidades vendidas, demostrando la influencia del precio unitario de los productos premium en la rentabilidad general.
+ 3. La comparativa mensual (Consulta 4) permite detectar rápidamente meses valle con rendimiento 'Por debajo' del promedio, alertando sobre la necesidad de planificar promociones preventivas para sostener la facturación en periodos de baja estacionalidad.
 */
